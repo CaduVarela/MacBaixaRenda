@@ -1,13 +1,15 @@
-import { categoriesList } from "@/utils/constants";
+import { categoriesList } from "@component/utils/constants";
 import { useState } from "react";
 import styles from "./CategoryMenu.module.scss";
+import { useStore } from "../../store/store";
 
 export default function CategoryMeny() {
   const [categoryActive, setCategoryActive] = useState("");
+  const category = useStore((state) => state.changeCategory);
 
   const onCategoryClick = (id: string) => {
     setCategoryActive(id);
-    // category(id);
+    category(id);
   };
 
   return (
@@ -20,7 +22,7 @@ export default function CategoryMeny() {
               key={category?.id}
               onClick={() => onCategoryClick(category?.id)}
               className={
-                categoryActive === category?.id ? styles.activeCategory : ''
+                categoryActive === category?.id ? styles.activeCategory : ""
               }
             >
               <Icon size={40} className={styles.icons} />
