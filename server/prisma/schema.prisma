@@ -58,7 +58,7 @@ model OrderProduct {
 model Order {
   id            Int     @id @default(autoincrement())
   name          String
-  celular       String
+  phone         String
   cep           String?
   street        String?
   number        String?
