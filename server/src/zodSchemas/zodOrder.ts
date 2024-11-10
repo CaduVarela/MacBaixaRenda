@@ -46,18 +46,14 @@ export const zodOrderUpdate = z.object({
             products: z.array(
                 z.object({
                     productId: z.number(),
-                    quantity: z.number().positive(),
+                    quantity: z.number().positive().optional(),
                     observations: z.string().optional(),
                 })
             ).optional(),
         }).strict().optional(),
         $disconnect: z.object({
             products: z.array(
-                z.object({
-                    productId: z.number(),
-                    quantity: z.number().positive(),
-                    observations: z.string().optional(),
-                })
+                z.number().positive().optional()
             ).optional(),
         }).strict().optional(),
     }).strict(),
