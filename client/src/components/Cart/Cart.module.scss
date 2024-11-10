@@ -1,0 +1,51 @@
+@import "../../styles/variables";
+
+.section {
+  max-width: 540px;
+  min-height: 100vh;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding: 2rem 1rem 2rem 1rem;
+}
+
+.container {
+  max-height: 70vh;
+  padding-right: 0.5rem;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 0.2rem;
+    border-radius: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    border-radius: 0.5rem;
+  }
+}
+
+.btn {
+  background-color: $pink;
+  color: #fff;
+  padding: 0.5rem 5rem;
+  max-width: 300px;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.btnDisabled {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  padding: 0.5rem 5rem;
+  max-width: 300px;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  pointer-events: none;
+  cursor: not-allowed;
+}
