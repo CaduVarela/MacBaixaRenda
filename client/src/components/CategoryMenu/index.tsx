@@ -2,6 +2,8 @@ import { categoriesList } from "@component/utils/constants";
 import { useState } from "react";
 import styles from "./CategoryMenu.module.scss";
 import { useStore } from "../../store/store";
+import Link from "next/link";
+import { BsGear } from "react-icons/bs";
 
 export default function CategoryMeny() {
   const [categoryActive, setCategoryActive] = useState("");
@@ -30,6 +32,11 @@ export default function CategoryMeny() {
             </li>
           );
         })}
+
+        <Link href="/Order" className="md:mt-5 flex flex-col items-center justify-center space-y-1">
+          <BsGear size={35} className={styles.icons} />
+          <span className={styles.textCategory}>Gerenciamento</span>
+        </Link>
       </ul>
     </div>
   );
