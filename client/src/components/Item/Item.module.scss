@@ -1,0 +1,94 @@
+@use '../../styles/variables' as *;
+
+.item {
+  position: relative;
+  padding: 2rem 1rem 1.1rem;
+  width: 13rem;
+  height: 18rem;
+  border-radius: 0.5rem;
+  background-color: white;
+  cursor: pointer;
+  transition: transform .2s;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+}
+
+.description {
+  color: $dark-grey;
+  font-weight: 300;
+  font-size: 0.9rem;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
+.offer {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+
+  background-color: $pink;
+  color: white;
+  padding: 0 0.5rem;
+  border-top-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+@media screen and (max-width: 740px) {
+  .item {
+    position: none;
+    border: 1px solid $light-grey;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 1rem;
+    width: 100%;
+    height: fit-content;
+    box-shadow: none;
+
+    .textPrice {
+      text-align: end;
+    }
+
+    .imgFood {
+      position: relative;
+      height: 70px !important;
+      min-width: 80px !important;
+      max-width: 80px !important;
+    }
+  }
+
+  .offer {
+    top: unset;
+    top: 90%;
+    left: 0.5rem;
+    right: unset;
+    padding: 0.2rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .item {
+    flex-direction: column;
+    position: relative;
+
+    .imgFood {
+      position: initial;
+      margin-bottom: 0;
+    }
+  }
+
+  .offer {
+    position: absolute;
+    top: 0.5rem;
+    left: unset;
+    right: 0.5rem;
+    padding: 0.2rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
