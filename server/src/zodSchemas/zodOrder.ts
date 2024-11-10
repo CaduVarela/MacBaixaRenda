@@ -3,7 +3,10 @@ import { z } from "zod";
 export const zodOrderCreate = z.object({
     body: z.object({
         name: z.string(),
-        celular: z.string(),
+        phone: z.string().regex(
+            /^[0-9]{10,11}$/,
+            'Invalid phone number format'
+        ),
         cep: z.string().optional(),
         street: z.string().optional(),
         number: z.string().optional(),
@@ -27,7 +30,10 @@ export const zodOrderCreate = z.object({
 export const zodOrderUpdate = z.object({
     body: z.object({
         name: z.string().optional(),
-        celular: z.string().optional(),
+        phone: z.string().regex(
+            /^[0-9]{10,11}$/,
+            'Invalid phone number format'
+        ).optional(),
         cep: z.string().optional(),
         street: z.string().optional(),
         number: z.string().optional(),
