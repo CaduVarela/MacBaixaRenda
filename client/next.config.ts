@@ -1,7 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  reactStrictMode: true,
+  sassOptions: {
+    api: "modern-compiler",
+    quietDeps: true,
+    silenceDeprecations: ['legacy-js-api'],
+  },
 };
 
 export default nextConfig;
