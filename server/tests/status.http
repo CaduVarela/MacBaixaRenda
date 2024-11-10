@@ -1,0 +1,32 @@
+POST http://localhost:3000/api/status HTTP/1.1
+content-type: application/json
+
+{
+  "type": "Active"
+}
+
+#####
+
+@target = 2
+
+PUT http://localhost:3000/api/status/{{target}} HTTP/1.1
+content-type: application/json
+
+{
+  "type": "Inactive"
+}
+
+#####
+
+DELETE http://localhost:3000/api/status/{{target}} HTTP/1.1
+content-type: application/json
+
+#####
+
+GET http://localhost:3000/api/status HTTP/1.1
+content-type: application/json
+
+#####
+
+GET http://localhost:3000/api/status/{{target}} HTTP/1.1
+content-type: application/json

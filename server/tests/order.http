@@ -1,0 +1,76 @@
+POST http://localhost:3000/api/order HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Sample Order",
+  "phone": "1234567891",
+  "deliveryType": "Express",
+  "paymentType": "Credit Card"
+}
+
+#####
+
+POST http://localhost:3000/api/order HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Sample Order",
+  "phone": "1234567891",
+  "deliveryType": "Express",
+  "paymentType": "Credit Card",
+  "$connect": {
+    "products": [
+        {
+            "productId": 1,
+            "quantity": 1
+        },
+        {
+            "productId": 4,
+            "quantity": 5
+        }
+    ]
+  }
+}
+
+#####
+
+@target = 1
+
+PUT http://localhost:3000/api/order/{{target}} HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Updated Order",
+  "$connect": {
+    "products": [
+        {
+            "productId": 2,
+            "quantity": 3,
+            "observations": "Note for product 2"
+        },
+        {
+            "productId": 4,
+            "quantity": 3,
+            "observations": "Note for product 4"
+        }
+    ]
+  },
+  "$disconnect": {
+    "products": [2]
+  }
+}
+
+#####
+
+DELETE http://localhost:3000/api/order/{{target}} HTTP/1.1
+content-type: application/json
+
+#####
+
+GET http://localhost:3000/api/order HTTP/1.1
+content-type: application/json
+
+#####
+
+GET http://localhost:3000/api/order/{{target}} HTTP/1.1
+content-type: application/json
