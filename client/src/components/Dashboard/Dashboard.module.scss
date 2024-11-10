@@ -1,0 +1,8 @@
+@import '../../styles/variables';
+
+.status {
+  outline: none;
+  border: 1px solid $light-grey;
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+}
