@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { StateOne, StateTwo } from "./types";
+import { createJSONStorage } from "zustand/middleware";
 
 export const useStore = create(
   persist<StateOne>(
@@ -106,7 +107,7 @@ export const useStore = create(
 }),
   {
     name: "cart-storage",
-    getStorage: () => localStorage,
+    storage: createJSONStorage(() => localStorage),
   }
 ));
 
@@ -175,7 +176,7 @@ export const useFormStore = create(
     }),
     {
       name: "form-storage",
-      getStorage: () => localStorage,
+      storage: createJSONStorage(() => localStorage),
     }
   )
 );
