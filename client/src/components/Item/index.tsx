@@ -9,7 +9,6 @@ interface ItemProps {
 
 export default function Item({ item }: ItemProps) {
   const { addToCart } = useStore();
-  const imagePath = `/images/${item.id}.png`;
 
   const handleAddToCart = () => {
     addToCart(item);
@@ -23,10 +22,10 @@ export default function Item({ item }: ItemProps) {
       <div className={`${styles.imgFood} ${item?.offer && "mb-[1rem]"} h-full`}>
         {item?.offer && <div className={`${styles.offer}`}>oferta</div>}
         <Image
-          src={imagePath}
+          src={item.imgLink ?? ''}
           alt={item?.name}
           width={110}
-          height={90}
+          height={110}
           unoptimized
         />
       </div>

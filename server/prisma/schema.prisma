@@ -15,6 +15,7 @@ model Product {
   categoryId  Int
   category    Category @relation(fields: [categoryId], references: [id])
   orders      OrderProduct[]
+  imgLink     String?
 
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt

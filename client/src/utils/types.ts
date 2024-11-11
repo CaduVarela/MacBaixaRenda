@@ -8,6 +8,7 @@ export interface IFood {
   price: number;
   quantity: number;
   observations?: string | undefined;
+  imgLink?: string;
 }
 
 export interface IcategoriesList {

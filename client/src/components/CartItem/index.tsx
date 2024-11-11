@@ -10,8 +10,6 @@ interface IProps {
 }
 
 export default function CartItem({ item }: IProps) {
-  const imagePath = `images/${item?.id}.png`;
-
   return (
     <div className={styles.container}>
       <Accordion className="w-full">
@@ -22,7 +20,7 @@ export default function CartItem({ item }: IProps) {
             >
               <div className={styles.image}>
                 <Image
-                  src={imagePath}
+                  src={item.imgLink ?? ""}
                   alt={item?.name}
                   width={50}
                   height={50}
@@ -44,12 +42,17 @@ export default function CartItem({ item }: IProps) {
                 </p>
               </div>
             </div>
-            <div className="flex items-center text-[1.1rem] font-bold text-yellow">{`R$ ${item?.price?.toLocaleString(
-              "pt-br",
-              {
-                minimumFractionDigits: 2,
-              }
-            )}`}</div>
+            <div className="flex flex-col items-end justify-center">
+              <div className="flex items-center text-[1.1rem] font-bold text-yellow">{`R$ ${item?.price?.toLocaleString(
+                "pt-br",
+                {
+                  minimumFractionDigits: 2,
+                }
+              )}`}</div>
+              <span className="text-[0.8rem] font-bold text-dark-grey">
+                {item?.quantity}x
+              </span>
+            </div>
           </div>
         </AccordionSummary>
         <AccordionDetails>

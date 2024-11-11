@@ -8,6 +8,7 @@ export const zodProductCreate = z.object({
             return n.toString().split('.')[1]?.length <= 2
         }, { message: 'Max precision is 2 decimal places' }),
         categoryId: z.number(),
+        imgLink: z.string().optional(),
     }).strict(),
 });
 
@@ -19,5 +20,6 @@ export const zodProductUpdate = z.object({
             return n.toString().split('.')[1]?.length <= 2
         }, { message: 'Max precision is 2 decimal places' }).optional(),
         categoryId: z.number().optional(),
+        imgLink: z.string().optional(),
     }).strict(),
 });

@@ -15,9 +15,9 @@ export default function ItemsList() {
   async function fetchApi() {
     try {
       setLoading(true);
-      const response = await fetch(`http://127.0.0.1:3001/${selectedCategory}`);
+      const response = await fetch(`http://localhost:3001/api/product?filters={"category":{"name":{"equals":"${selectedCategory}"}}}`);
       const responseParsed = await response.json();
-      setFoods(responseParsed);
+      setFoods(responseParsed.data);
       setLoading(false);
       setIsReady(true);
     } catch (error) {
