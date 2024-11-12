@@ -116,7 +116,7 @@ export const useFormStore = create(
     (set) => ({
       form: {
         name: "",
-        celular: "",
+        phone: "",
         cep: "",
         street: "",
         number: "",
@@ -134,7 +134,7 @@ export const useFormStore = create(
           form: {
             ...prevState?.form,
             name: "",
-            celular: "",
+            phone: "",
             cep: "",
             street: "",
             number: "",
@@ -148,12 +148,12 @@ export const useFormStore = create(
 
       deleteAddress: () =>
         set((prevState) => {
-          const { name, celular, paymentType, deliveryType } = prevState.form; // mantém apenas nome e celular
+          const { name, phone, paymentType, deliveryType } = prevState.form; // mantém apenas nome e celular
           return {
             ...prevState,
             form: {
               name,
-              celular,
+              phone,
               deliveryType,
               paymentType,
             },
