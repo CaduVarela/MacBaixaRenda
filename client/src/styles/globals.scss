@@ -32,6 +32,15 @@ button, input, select, textarea {
   border-radius: 0.5rem;
 }
 
+.btnStylesEdit {
+  background-color: $orange;
+  border: 2px solid $orange;
+  width: 180px;
+  color: white;
+  font-weight: 500;
+  border-radius: 0.5rem;
+}
+
 .btnCancel {
   color: $dark-grey;
   font-weight: 500;

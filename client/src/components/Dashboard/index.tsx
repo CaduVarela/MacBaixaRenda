@@ -94,13 +94,15 @@ export default function Dasboard() {
   };
 
   const handleSaveOrder = async (updatedOrder: IForm) => {
-    // @todo: pass the right params to update on body
-    return;
     try {
       const response = await fetch(`http://localhost:3001/api/order/${updatedOrder.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ /* HERE */ })
+        body: JSON.stringify({ 
+          name: updatedOrder.name,
+          phone: updatedOrder.phone,
+          paymentType: updatedOrder.paymentType
+        })
       }).then(response => response.json());
       console.log(response)
       fetchApiOrders();
@@ -160,16 +162,16 @@ export default function Dasboard() {
                           ))}
                         </select>
                         <button
+                          className="btnStylesEdit py-1"
+                          onClick={() => handleEditOrder(index)}
+                        >
+                          Editar
+                        </button>
+                        <button
                           className="btnStyles py-1"
                           onClick={() => handleCancelOrder(order?.id)}
                         >
                           Cancelar
-                        </button>
-                        <button
-                          className="btnStyles py-1"
-                          onClick={() => handleEditOrder(index)}
-                        >
-                          Editar
                         </button>
                       </div>
                     </TableCell>
