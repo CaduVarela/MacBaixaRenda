@@ -2,8 +2,8 @@ import { fullNameRegex } from "@component/utils/constants";
 import * as Yup from "yup";
 
 export const formUser = Yup.object().shape({
-  celular: Yup.string()
-    .required("O campo 'Calular' é obrigatório")
+  phone: Yup.string()
+    .required("O campo 'Celular' é obrigatório")
     .max(14, "Número iválido")
     .min(14, "Número iválido"),
     // .matches(phoneRegex, "Celular inválido"),

@@ -35,7 +35,7 @@ export interface IForm {
 export interface StateTwo {
   form: {
     name: string;
-    celular: string | number;
+    phone: string | number;
     cep?: string | number;
     street?: string;
     number?: string | number;

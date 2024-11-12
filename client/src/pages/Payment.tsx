@@ -36,13 +36,14 @@ export default function Payment() {
   const [selectPayment, setSelectedPayment] = useState<string>("card");
 
   const onSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    const formFormatted = {
-      name: form?.name,
-      phone: form?.celular,
-      deliveryType: form?.deliveryType,
-      paymentType: form?.paymentType,
-      statusId: 2,
+      e.preventDefault();
+    const formFormatted = { 
+        name: form?.name, 
+        phone: form?.phone, 
+        deliveryType: form?.deliveryType, 
+        // cep: form?.cep, 
+        paymentType: form?.paymentType,
+        statusId: 2,
     };
     const products = cart.map((item) => {
       return {
@@ -73,7 +74,7 @@ export default function Payment() {
       try {
         await formUser.validate({
           name: form?.name,
-          celular: form?.celular,
+          phone: form?.phone,
         });
 
         if (form?.deliveryType === "delivery") {
@@ -109,7 +110,7 @@ export default function Payment() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [
       cleanCart,
-      form?.celular,
+      form?.phone,
       form?.cep,
       form?.deliveryType,
       form?.name,
@@ -176,13 +177,13 @@ export default function Payment() {
                     Celular*
                   </label>
                   <input
-                    name="celular"
+                    name="phone"
                     id="cellphone"
                     placeholder="Seu celular"
                     type="text"
                     required
                     className="md:w-1/2 w-full"
-                    value={phoneMask(form?.celular as string)}
+                    value={phoneMask(form?.phone as string)}
                     maxLength={14}
                     onChange={handleInputChange}
                   />
