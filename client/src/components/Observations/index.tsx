@@ -14,7 +14,10 @@ export default function ObsModal({ item }: IProps) {
   const [obs, setObs] = useState(item.observations);
 
   const removeItem = () => {
-    item?.quantity === 1 ? setOpen(true) : deleteItem(item);
+    if(item?.quantity === 1){
+      return setOpen(true);
+    }
+    return deleteItem(item);
   };
 
   return (
