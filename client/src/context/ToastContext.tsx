@@ -1,4 +1,4 @@
-import { createContext, useCallback } from 'react';
+import { createContext, ReactNode, useCallback } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -11,9 +11,9 @@ interface IToastContext {
   showToast: ({message, status}: IToast) => void;
 }
 
-export const ToastContext = createContext<IToastContext>({ showToast: () => {} });;
+export const ToastContext = createContext<IToastContext>({ showToast: () => {} });
 
-export const ToastProvider = ({children}: any) => {
+export const ToastProvider = ({children}: {children: ReactNode}) => {
   const showToast = useCallback(( {message, status}: IToast ) => {
     switch (status) {
       case "success":
