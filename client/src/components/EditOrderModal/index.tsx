@@ -66,7 +66,7 @@ const EditOrderModal = ({ open, handleClose, order, onSave }: IProps) => {
               required
               className="md:w-1/2 w-full"
               value={phoneMask(form?.phone as string)}
-              maxLength={15}
+              maxLength={14}
               onChange={handleInputChange}
             />
 
