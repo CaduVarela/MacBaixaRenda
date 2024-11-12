@@ -143,7 +143,7 @@ export function prismaFindMany(model: any, prismaIncludeConfig?: Object): Reques
     return async (req, res) => {
         try {
             const page = Number(req.query.page) || 0;
-            const take = Number(req.query.take) || 10;
+            const take = Number(req.query.take) || 25;
 
             const filters: any = req.query.filters ? JSON.parse(req.query.filters as string) : {};
             const orderBy = req.query.orderBy ? JSON.parse(req.query.orderBy as string) : undefined;
