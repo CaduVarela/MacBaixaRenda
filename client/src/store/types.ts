@@ -23,7 +23,8 @@ export interface IForm {
   neighborhood?: string;
   deliveryType: string;
   paymentType: string;
-  order?: IFood[]
+  order?: IFood[];
+  index?: number; 
 }
 
 export interface StateTwo {
