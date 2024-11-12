@@ -5,7 +5,8 @@ content-type: application/json
   "name": "Sample Order",
   "phone": "1234567891",
   "deliveryType": "Express",
-  "paymentType": "Credit Card"
+  "paymentType": "Credit Card",
+  "statusId": 1
 }
 
 #####

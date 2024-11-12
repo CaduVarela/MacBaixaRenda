@@ -15,6 +15,7 @@ export const zodOrderCreate = z.object({
         neighborhood: z.string().optional(),
         deliveryType: z.string(),
         paymentType: z.string(),
+        statusId: z.number().positive(),
         $connect: z.object({
             products: z.array(
                 z.object({
@@ -42,6 +43,7 @@ export const zodOrderUpdate = z.object({
         neighborhood: z.string().optional(),
         deliveryType: z.string().optional(),
         paymentType: z.string().optional(),
+        statusId: z.number().positive().optional(),
         $connect: z.object({
             products: z.array(
                 z.object({
