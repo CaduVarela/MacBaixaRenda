@@ -29,6 +29,7 @@ export default {
       'light-yellow': '#FDC8444D',
       'bg-color': '#FAFAFA',
       'yellow': '#FDC844',
+      'orange': '#FF6323',
     },
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],
