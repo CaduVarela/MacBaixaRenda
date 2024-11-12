@@ -27,7 +27,7 @@ export default function Payment() {
   const form = useFormStore((s) => s.form);
   const cart = useStore((s) => s.cart);
   const { cleanCart } = useStore();
-  const { deleteAddress } = useFormStore();
+  const { deleteAddress, cleanValues } = useFormStore();
   const [isOpen, setIsOpen] = useState(false);
   const size = UseWindowSize();
   const router = useRouter();
@@ -36,29 +36,27 @@ export default function Payment() {
   const [selectPayment, setSelectedPayment] = useState<string>("card");
 
   const onSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
-      e.preventDefault();
-    const formFormatted = { 
-        name: form?.name, 
-        phone: form?.celular, 
-        deliveryType: form?.deliveryType, 
-        // cep: form?.cep, 
-        paymentType: form?.paymentType,
-        statusId: 2,
+    e.preventDefault();
+    const formFormatted = {
+      name: form?.name,
+      phone: form?.celular,
+      deliveryType: form?.deliveryType,
+      paymentType: form?.paymentType,
+      statusId: 2,
     };
     const products = cart.map((item) => {
       return {
         productId: item.id,
         quantity: item.quantity,
-        observations: item.description,
+        observations: item.observations,
       };
     });
-    const payload = { 
-        ...formFormatted, 
-        "$connect": {
-            products
-        } 
+    const payload = {
+      ...formFormatted,
+      $connect: {
+        products,
+      },
     };
-    console.log('payload: ', payload);
     await fetch("http://localhost:3001/api/order", {
       method: "POST",
       headers: {
@@ -66,12 +64,12 @@ export default function Payment() {
       },
       body: JSON.stringify(payload),
     });
+    cleanValues();
   };
 
   const handleClick = useCallback(
     async (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
-      console.log('form?.celular: ', form?.celular);
       try {
         await formUser.validate({
           name: form?.name,
