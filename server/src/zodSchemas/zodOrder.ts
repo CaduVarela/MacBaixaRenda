@@ -4,7 +4,7 @@ export const zodOrderCreate = z.object({
     body: z.object({
         name: z.string(),
         phone: z.string().regex(
-            /^[0-9]{10,11}$/,
+            /^(\(\d{2}\)\d{4,5}-\d{4})$/,
             'Invalid phone number format'
         ),
         cep: z.string().optional(),

@@ -3,6 +3,7 @@ import { IcategoriesList } from "./types";
 
 export const nonDigitCharacters = /\D/g;
 export const fullNameRegex = /^\s*([A-zÀ-ÿ]{2,})+(\s([A-zÀ-ÿ]{1,})+)+\s*$/gm;
+export const phoneRegex = /^(\(\d{2}\)\d{4,5}-\d{4})$/
 
 export const categoriesList: IcategoriesList[] = [
     { label: 'Pizza', icon: CiPizza, id: 'pizza' },
