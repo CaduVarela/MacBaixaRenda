@@ -177,7 +177,7 @@ export default function Payment() {
                     Celular*
                   </label>
                   <input
-                    name="celular"
+                    name="phone"
                     id="cellphone"
                     placeholder="Seu celular"
                     type="text"
