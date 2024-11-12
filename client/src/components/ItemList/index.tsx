@@ -26,6 +26,7 @@ export default function ItemsList() {
   }
 
   useEffect(() => {
+    console.log(selectedCategory);
     fetchApi();
   }, [selectedCategory]);
 

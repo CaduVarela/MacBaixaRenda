@@ -9,6 +9,9 @@ export interface IFood {
   quantity: number;
   observations?: string | undefined;
   imgLink?: string;
+  product?: {
+    name: string
+  };
 }
 
 export interface IcategoriesList {

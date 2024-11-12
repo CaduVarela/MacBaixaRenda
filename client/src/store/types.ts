@@ -13,8 +13,9 @@ export interface StateOne {
 }
 
 export interface IForm {
+  id: number;
   name: string;
-  celular: string | number;
+  phone: string | number;
   cep?: string | number;
   street?: string;
   number?: string | number;
@@ -23,7 +24,11 @@ export interface IForm {
   neighborhood?: string;
   deliveryType: string;
   paymentType: string;
-  order?: IFood[]
+  products?: IFood[];
+  status?: {
+    id: number,
+    type: string
+  };
 }
 
 export interface StateTwo {
