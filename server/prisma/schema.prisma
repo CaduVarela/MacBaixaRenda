@@ -8,28 +8,28 @@ datasource db {
 }
 
 model Product {
-  id          Int     @id @default(autoincrement())
+  id          Int            @id @default(autoincrement())
   name        String
   description String
   price       Float
   categoryId  Int
-  category    Category @relation(fields: [categoryId], references: [id])
+  category    Category       @relation(fields: [categoryId], references: [id])
   orders      OrderProduct[]
   imgLink     String?
-
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
 
   @@map("product")
 }
 
 model Category {
-  id        Int      @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   name      String
   products  Product[]
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 
   @@map("category")
 }
@@ -37,7 +37,8 @@ model Category {
 model Status {
   id        Int      @id @default(autoincrement())
   type      String
-  
+  orders    Order[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -45,33 +46,36 @@ model Status {
 }
 
 model OrderProduct {
-  productId     Int
-  product       Product  @relation(fields: [productId], references: [id])
-  orderId       Int
-  order         Order    @relation(fields: [orderId], references: [id])
-  quantity      Int
-  observations  String?
+  productId    Int
+  product      Product @relation(fields: [productId], references: [id])
+  orderId      Int
+  order        Order   @relation(fields: [orderId], references: [id])
+  quantity     Int
+  observations String?
 
   @@id([productId, orderId])
   @@map("orderProduct")
 }
 
 model Order {
-  id            Int     @id @default(autoincrement())
-  name          String
-  phone         String
-  cep           String?
-  street        String?
-  number        String?
-  city          String?
-  state         String?
-  neighborhood  String?
-  deliveryType  String
-  paymentType   String
-  products      OrderProduct[]
+  id           Int            @id @default(autoincrement())
+  name         String
+  phone        String
+  cep          String?
+  street       String?
+  number       String?
+  city         String?
+  state        String?
+  neighborhood String?
+  deliveryType String
+  paymentType  String
+  products     OrderProduct[]
+  statusId     Int
+  status       Status         @relation(fields: [statusId], references: [id])
+  canceled     Boolean        @default(false)
 
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
 
   @@map("order")
 }

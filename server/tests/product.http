@@ -2,10 +2,10 @@ POST http://localhost:3001/api/product HTTP/1.1
 content-type: application/json
 
 {
-  "name": "Sample Product",
-  "description": "Product Description",
+  "name": "Agua",
+  "description": "AGUA!",
   "price": 100.50,
-  "categoryId": 1,
+  "categoryId": 4,
   "imgLink": "https://kimpaes.com.br/wp-content/uploads/2020/01/p%C3%A3o-de-hamburguer.png"
 }
 

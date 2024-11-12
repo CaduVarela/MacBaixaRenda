@@ -16,10 +16,24 @@ route.post('/',
     handleOrder("create"))
 
 route.get('/',
-    prismaFindMany(model, { products: true, status: true }))
+    prismaFindMany(model, { 
+        products: { 
+            include: { 
+                product: { 
+                    select: { name: true } 
+                } 
+            } 
+        }, status: true }))
 
 route.get('/:id',
-    prismaFindUnique(model, { products: true, status: true }))
+    prismaFindUnique(model, { 
+        products: { 
+            include: { 
+                product: { 
+                    select: { name: true } 
+                } 
+            } 
+        }, status: true }))
 
 route.put('/:id',
     zodValidate(zodOrderUpdate),

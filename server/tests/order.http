@@ -2,11 +2,11 @@ POST http://localhost:3001/api/order HTTP/1.1
 content-type: application/json
 
 {
-  "name": "Sample Order",
+  "name": "Sample Order Test",
   "phone": "1234567891",
   "deliveryType": "Express",
   "paymentType": "Credit Card",
-  "statusId": 1
+  "statusId": 2
 }
 
 #####
@@ -35,7 +35,7 @@ content-type: application/json
 
 #####
 
-@target = 1
+@target = 2
 
 PUT http://localhost:3001/api/order/{{target}} HTTP/1.1
 content-type: application/json
@@ -45,20 +45,26 @@ content-type: application/json
   "$connect": {
     "products": [
         {
-            "productId": 2,
-            "quantity": 3,
-            "observations": "Note for product 2"
+            "productId": 6,
+            "quantity": 1,
+            "observations": "Faz com amor, por favor"
         },
         {
-            "productId": 4,
-            "quantity": 3,
-            "observations": "Note for product 4"
+            "productId": 7,
+            "quantity": 5,
+            "observations": "BEBA AGUA"
         }
     ]
-  },
-  "$disconnect": {
-    "products": [2]
   }
+}
+
+#####
+
+PUT http://localhost:3001/api/order/{{target}} HTTP/1.1
+content-type: application/json
+
+{
+    "statusId": 3
 }
 
 #####
@@ -68,7 +74,7 @@ content-type: application/json
 
 #####
 
-GET http://localhost:3001/api/order HTTP/1.1
+GET http://localhost:3001/api/order?filters={"canceled": false} HTTP/1.1
 content-type: application/json
 
 #####

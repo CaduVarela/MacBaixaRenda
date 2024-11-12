@@ -2,18 +2,18 @@ POST http://localhost:3001/api/category HTTP/1.1
 content-type: application/json
 
 {
-  "name": "Sample Category"
+  "name": "bebidas"
 }
 
 #####
 
-@target = 2
+@target = 1
 
 PUT http://localhost:3001/api/category/{{target}} HTTP/1.1
 content-type: application/json
 
 {
-  "name": "Updated Category"
+  "name": "pizza"
 }
 
 #####
