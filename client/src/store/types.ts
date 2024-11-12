@@ -29,6 +29,7 @@ export interface IForm {
     id: number,
     type: string
   };
+  index?: number; 
 }
 
 export interface StateTwo {
