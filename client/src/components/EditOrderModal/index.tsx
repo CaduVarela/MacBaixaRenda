@@ -59,13 +59,13 @@ const EditOrderModal = ({ open, handleClose, order, onSave }: IProps) => {
               Celular:
             </label>
             <input
-              name="celular"
+              name="phone"
               id="cellphone"
               placeholder="Seu celular"
               type="text"
               required
               className="md:w-1/2 w-full"
-              value={phoneMask(form?.celular as string)}
+              value={phoneMask(form?.phone as string)}
               maxLength={15}
               onChange={handleInputChange}
             />

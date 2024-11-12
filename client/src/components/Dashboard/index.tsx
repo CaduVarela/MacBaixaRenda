@@ -9,7 +9,6 @@ import {
 } from "@mui/material";
 import styles from "./Dashboard.module.scss";
 import { Fragment, useContext, useEffect, useState } from "react";
-import { useFormStore } from "@component/store/store";
 import React from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { phoneMask } from "@component/utils/phoneMask";
@@ -23,7 +22,6 @@ export default function Dasboard() {
   const [open, setOpen] = useState<{ [key: number]: boolean }>({});
   const [status, setStatus] = useState<IStatus[]>([]);
   const [orders, setOrders] = useState<IForm[]>([]);
-  const [data, setData] = useState<IForm[]>([]);
   const [openModalEdit, setOpenModalEdit] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState<IForm | null>(null);
 
@@ -59,18 +57,18 @@ export default function Dasboard() {
   };
 
   const handleEditOrder = (index: number) => {
-    setSelectedOrder({ ...data[index], index });
+    setSelectedOrder(orders[index]);
     setOpenModalEdit(true);
   };
 
   const handleStatusChange = async (e: React.ChangeEvent<HTMLSelectElement>, id: number) => {
     try {
       const statusId = Number(e.target.value);
-      const response = await fetch(`http://localhost:3001/api/order/${id}`, {
+      await fetch(`http://localhost:3001/api/order/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ statusId })
-      }).then(response => response.json());
+      });
       fetchApiOrders();
       showToast({ message: "Status do pedido atualizado!", status: "success" });
     } catch (error) {
@@ -95,10 +93,22 @@ export default function Dasboard() {
     }
   };
 
-  const handleSaveOrder = (updatedOrder: IForm) => {
-    const newData = data?.map((order, index) => index === updatedOrder.index ? updatedOrder : order);
-    useFormStore.setState((s) => ({ ...s, dataForm: newData }));
-    setOpenModalEdit(false);
+  const handleSaveOrder = async (updatedOrder: IForm) => {
+    // @todo: pass the right params to update on body
+    return;
+    try {
+      const response = await fetch(`http://localhost:3001/api/order/${updatedOrder.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ /* HERE */ })
+      }).then(response => response.json());
+      console.log(response)
+      fetchApiOrders();
+      showToast({ message: "Pedido Atualizado!", status: "success" });
+    } catch (error) {
+      showToast({ message: "Erro ao atualizar o pedido. Tente novamente.", status: "error" });
+      console.warn(error);
+    }
   }
 
   const position = (e: number) => {
@@ -216,7 +226,7 @@ export default function Dasboard() {
           open={openModalEdit}
           handleClose={() => setOpenModalEdit(false)}
           order={selectedOrder}
-          onSave={handleSaveOrder}
+          onSave={(updatedOrder) => handleSaveOrder(updatedOrder)}
         />
       )}
     </>
