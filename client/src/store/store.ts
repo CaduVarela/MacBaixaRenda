@@ -177,6 +177,8 @@ export const useFormStore = create(
     {
       name: "form-storage",
       storage: createJSONStorage(() => localStorage),
+      // apenas o dataForm no persist
+      partialize: (state) => ({ dataForm: state.dataForm})
     }
   )
 );
