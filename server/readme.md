@@ -104,15 +104,11 @@ O parâmetro `filters` permite aplicar critérios de filtragem nos resultados. E
 
 - **Equals**: Para buscar entidades que têm um valor exato em um campo específico, utilize a operação `equals`. Por exemplo:
 
-    ```
     GET /api/entity?filters={"name":{"equals":"Example Name"}}
-    ```
 
 - **Contains**: Para buscar entidades onde um campo contém uma substring, utilize a operação `contains`:
 
-    ```
     GET /api/entity?filters={"name":{"contains":"Example"}}
-    ```
 
 #### Parâmetro orderBy
 
@@ -122,17 +118,13 @@ O parâmetro `orderBy` é utilizado para definir a ordem dos resultados retornad
 
 Para ordenar pelo campo `createdAt` em ordem decrescente:
 
-    ```
     GET /api/entity?orderBy={"createdAt":"desc"}
-    ```
 
 ### 🔗 Exemplo Combinado
 
 Combine `filters` e `orderBy` na mesma requisição para filtrar e ordenar ao mesmo tempo:
 
-    ```
     GET /api/entity?filters={"name":{"contains":"Example"}}&orderBy={"createdAt":"asc"}
-    ```
 
 ### 🔍 Buscar Entidade por ID
 
