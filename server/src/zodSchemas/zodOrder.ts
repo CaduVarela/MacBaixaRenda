@@ -29,7 +29,7 @@ export const zodOrderCreate = z.object({
 export const zodOrderUpdate = z.object({
     body: z.object({
         name: z.string().optional(),
-        phone: z.string().min(14).max(14),
+        phone: z.string().min(14).max(14).optional(),
         cep: z.string().optional(),
         street: z.string().optional(),
         number: z.string().optional(),

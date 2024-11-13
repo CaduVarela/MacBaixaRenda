@@ -36,15 +36,26 @@ export default function Payment() {
   const [selectPayment, setSelectedPayment] = useState<string>("card");
 
   const onSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
-      e.preventDefault();
-    const formFormatted = { 
-        name: form?.name, 
-        phone: form?.phone, 
-        deliveryType: form?.deliveryType, 
-        // cep: form?.cep, 
-        paymentType: form?.paymentType,
-        statusId: 2,
+    e.preventDefault();
+    const localStorageAddress = localStorage.getItem("address");
+    const addressParsed = localStorageAddress ? JSON.parse(localStorageAddress) : {};
+
+    const formFormatted = {
+      name: form?.name,
+      phone: form?.phone,
+      deliveryType: form?.deliveryType,
+      cep: addressParsed?.cep,
+      street: addressParsed?.street,
+      number: addressParsed?.number,
+      city: addressParsed?.city,
+      state: addressParsed?.state,
+      neighborhood: addressParsed?.neighborhood,
+      paymentType: form?.paymentType,
+      statusId: 2,
     };
+
+    localStorage.setItem("address", JSON.stringify({}));
+
     const products = cart.map((item) => {
       return {
         productId: item.id,
