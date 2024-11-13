@@ -51,7 +51,7 @@ export default function Payment() {
       state: addressParsed?.state,
       neighborhood: addressParsed?.neighborhood,
       paymentType: form?.paymentType,
-      statusId: 2,
+      statusId: 1,
     };
 
     localStorage.setItem("address", JSON.stringify({}));
