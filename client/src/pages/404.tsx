@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export function NotFound() {
+export default function NotFound() {
   return (
     <section className="h-[100vh]">
       <div className="h-[80vh] flex flex-col items-center justify-center">
